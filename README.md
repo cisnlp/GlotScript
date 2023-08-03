@@ -1,5 +1,49 @@
-# LangScript
+# LangScriptID
 Detect the script of text based on ISO 15924
+
+# Usage
+
+```python
+# Download https://raw.githubusercontent.com/kargaranamir/LangScript/main/LangScriptID.py
+
+from LangScriptID import get_script_predictor
+sp = get_script_predictor()
+```
+
+```python
+sp('これは日本人です')
+>> ('Hira', 0.625, {'details': {'Hira': 0.625, 'Hani': 0.375}, 'tie': False, 'interval': 0.25})
+```
+
+```python
+sp('This is Latin')
+>> ('Latn', 1.0, {'details': {'Latn': 1.0}, 'tie': False, 'interval': 1})
+```
+
+```python
+sp('මේක සිංහල')
+>> ('Sinh', 1.0, {'details': {'Sinh': 1.0}, 'tie': False, 'interval': 1})
+```
+
+```python
+sp('𝄞𝄫  𒊕𒀸')
+>> ('Xsux', 0.5, {'details': {'Xsux': 0.5, 'Zyyy': 0.5}, 'tie': True, 'interval': 0.0})
+```
+
+
+## Citation
+If you use any part of this library in your research, please cite it using the following BibTex entry. 
+
+```
+@misc{langscriptid,
+  author = {Kargaran, Amir Hossein},
+  title = {LangScriptID Python Library},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub Repository},
+  howpublished = {\url{https://github.com/kargaranamir/LangScriptID}},
+}
+```
 
 
 ## Related Sources
