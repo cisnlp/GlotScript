@@ -2,13 +2,12 @@
 Author: Amir Hossein Kargaran
 Date: August, 2023
 
-Description: This code detects the script of the given texts.
+Description: This code detects the script (writing system) of the given text.
 
 MIT License
 
-Original code is from Meta Platforms, Inc. and affiliates and is based on the MIT license, with permission for distribution and modification.
-The original code is capable of detecting less than 40 scripts.
-Original code repository: https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py
+Original code is from Meta and is based on the MIT license, with permission for distribution and modification.
+The original code is capable of detecting less than 40 scripts: https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py
 """
 
 import string

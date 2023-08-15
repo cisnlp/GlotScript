@@ -1,18 +1,21 @@
-# LangScriptID
-Detect the script of text based on ISO 15924.
+# GlotScript
+Detect the script (writing system) of text based on ISO 15924.
 - The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
 - Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
 
+## Special codes
+- `Zinh` code is the Unicode script property value of characters that may be used with multiple scripts, and that inherit their script from a preceding base character. In some cases, we opted to integrate parts of the Zinh code (e.g. ARABIC FATHATAN..ARABIC HAMZA BELOW, ARABIC LETTER SUPERSCRIPT ALEF) into a different block.
+- `Zyyy` code is the Unicode script for "Common" characters.
 
 ## Install
 ```bash
-pip3 install LangScriptID@git+https://github.com/kargaranamir/LangScriptID
+pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
 
 ## Usage
 
 ```python
-from LangScriptID import get_script_predictor
+from GlotScript import get_script_predictor
 sp = get_script_predictor()
 ```
 
@@ -22,13 +25,13 @@ sp('これは日本人です')
 ```
 
 ```python
-sp('This is Latin')
->> ('Latn', 1.0, {'details': {'Latn': 1.0}, 'tie': False, 'interval': 1})
+sp('This is Latin')[:1]
+>> ('Latn', 1.0)
 ```
 
 ```python
-sp('මේක සිංහල')
->> ('Sinh', 1.0, {'details': {'Sinh': 1.0}, 'tie': False, 'interval': 1})
+sp('මේක සිංහල')[0]
+>> 'Sinh'
 ```
 
 ```python
@@ -41,18 +44,21 @@ sp('𝄞𝄫  𒊕𒀸')
 If you use any part of this library in your research, please cite it using the following BibTex entry. 
 
 ```
-@misc{langscriptid,
-  author = {Kargaran, Amir Hossein},
-  title = {LangScriptID Python Library},
+@misc{glotscript,
+  author = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
+  title = {GlotScript},
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/kargaranamir/LangScriptID}},
+  howpublished = {\url{https://github.com/cisnlp/GlotScript}},
 }
 ```
 
 
-## Related Sources
+## Exploring Unicode Blocks: Related Sources
+<details>
+<summary>Click to Exapand</summary>
+
 - [List of Unicode characters - Wikipedia](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 - [Lightweight Plain-Text Editor for macOS - CotEditor](https://github.com/coteditor/CotEditor/blob/main/CotEditor/Sources/Unicode.UTF32.CodeUnit%2BBlockName.swift)
 - [The Cygwin Terminal – terminal emulator for Cygwin, MSYS, and WSL - mintty](https://github.com/mintty/mintty/blob/master/src/scripts.t)
@@ -70,3 +76,7 @@ If you use any part of this library in your research, please cite it using the f
 - [Gradient Boosting on Decision Trees - catboost](https://github.com/catboost/catboost/blob/master/contrib/python/fonttools/fontTools/unicodedata/Blocks.py)
 - [Blender](https://github.com/blender/blender/blob/main/source/blender/blenfont/intern/blf_glyph.cc)
 - [Unicode Wikipedia](https://en.wikipedia.org/wiki/Unicode_block)
+
+</details>
+
+
