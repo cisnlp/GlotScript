@@ -1,11 +1,17 @@
 # LangScriptID
-Detect the script of text based on ISO 15924
+Detect the script of text based on ISO 15924.
+- The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
+- Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
 
-# Usage
+
+## Install
+```bash
+pip3 install LangScriptID@git+https://github.com/kargaranamir/LangScriptID
+```
+
+## Usage
 
 ```python
-# Download https://raw.githubusercontent.com/kargaranamir/LangScript/main/LangScriptID.py
-
 from LangScriptID import get_script_predictor
 sp = get_script_predictor()
 ```
@@ -62,5 +68,5 @@ If you use any part of this library in your research, please cite it using the f
 - [Unicode Subset Bitfields - Microsoft](https://learn.microsoft.com/en-us/windows/win32/intl/unicode-subset-bitfields)
 - [Stops - FAIR NLLB FB](https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py)
 - [Gradient Boosting on Decision Trees - catboost](https://github.com/catboost/catboost/blob/master/contrib/python/fonttools/fontTools/unicodedata/Blocks.py)
-- [Blender](https://github.com/blender/blender/blob/main/source/blender/blenfont/intern/blf_glyph.c)
+- [Blender](https://github.com/blender/blender/blob/main/source/blender/blenfont/intern/blf_glyph.cc)
 - [Unicode Wikipedia](https://en.wikipedia.org/wiki/Unicode_block)

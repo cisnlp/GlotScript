@@ -11,11 +11,9 @@ The original code is capable of detecting less than 40 scripts.
 Original code repository: https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py
 """
 
-import re
 import string
 import typing as tp
 from collections import Counter, defaultdict
-from pathlib import Path
 
 
 SCRIPT_RANGES = {
@@ -185,26 +183,6 @@ SCRIPT_RANGES = {
 }
 
 
-def get_script_map(language_script_file: Path) -> tp.Dict[str, str]:
-    """Returns a dict mapping a lang to its expected script in a single read run"""
-    lang_map: tp.Dict[str, str] = defaultdict(str)
-    with language_script_file.open("r", encoding="utf-8") as ls:
-        for row in ls:
-            columns = row.split("\t")
-            lang_map[columns[0]] = columns[1]
-    return lang_map
-
-
-def find_lang_script(lang: str, language_script_file: Path) -> tp.Optional[str]:
-    """Returns the expected script for a single lang"""
-    with language_script_file.open("r", encoding="utf-8") as ls:
-        for row in ls:
-            if row.startswith(lang):
-                columns = row.split("\t")
-                return columns[1]
-        return None
-
-
 ScoredScript = tp.Tuple[tp.Optional[str], float]
 
 
@@ -224,40 +202,11 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
         for c in string.whitespace + string.punctuation + string.digits
     }
 
-    def predict_script_org(sent: str) -> ScoredScript:
-        sent = sent.translate(replacement_map)
-
-        char_counts = Counter(sent).most_common()
-
-        script_count: tp.Dict[str, int] = defaultdict(int)
-        total = 0
-
-        for char, count in char_counts:
-            ordinal = ord(char)
-            for script_name in hist_map.get(ordinal, []):
-                total += count
-                script_count[script_name] += count
-
-        max_score = 0.0
-        max_script = None
-        for script, count in script_count.items():
-            score = abs(count / total)
-            if score > max_score:
-                max_score = score
-                max_script = script
-
-        if len(script_count) > 1 and max_score == (1 / len(script_count)):
-            return (None, 0)
-
-        return (max_script, max_score)
-
-
     def predict_script(sent: str) -> ScoredScript:
         sent = sent.translate(replacement_map)
 
         char_counts = Counter(sent)
         script_count: tp.Dict[str, int] = defaultdict(int)
-        total = 0
 
         for char, count in char_counts.items():
             ordinal = ord(char)
@@ -265,7 +214,7 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
                 script_count[script_name] += count
 
 
-        # sort script_count
+        # sort script_count alphabetically
         script_count = dict(sorted(script_count.items()))
 
         max_score = 0.0
@@ -277,7 +226,7 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
                 max_script = script
 
 
-        # Report all the scores
+        # sort all the scores
         sorted_scores = {script: abs(count / len(sent)) for script, count in script_count.items()}
         sorted_scores = dict(sorted(sorted_scores.items(), key=lambda item: item[1], reverse=True))
         
@@ -285,8 +234,9 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
             second_score = list(sorted_scores.values())[1]
             interval = max_score - second_score
             tie = True if interval == 0 else False
-
             return (max_script, max_score, {'details': sorted_scores, 'tie': tie, 'interval': interval})
+        elif max_score == 0:
+            return (None, 0, {'details': None, 'tie': None, 'interval': None})
         else:
             return (max_script, max_score, {'details': sorted_scores, 'tie': False, 'interval': 1})
 
