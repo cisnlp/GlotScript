@@ -8,7 +8,12 @@ Detect the script (writing system) of text based on ISO 15924.
 - `Zinh` code is the Unicode script property value of characters that may be used with multiple scripts, and that inherit their script from a preceding base character. In some cases, we opted to integrate parts of the Zinh code (e.g. ARABIC FATHATAN..ARABIC HAMZA BELOW, ARABIC LETTER SUPERSCRIPT ALEF) into a different block.
 - `Zyyy` code is the Unicode script for "Common" characters.
 
-## Install
+## Install from pip
+```bash
+pip3 install GlotScript
+```
+
+## Install from git
 ```bash
 pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
