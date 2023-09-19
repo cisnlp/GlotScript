@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="GlotScript",
-    version="1.1",
+    version="1.2",
     author="Amir Hossein Kargaran",
     author_email="kargaranamir@email.com",
     description="A package for detecting the script (writing system) of given text.",
