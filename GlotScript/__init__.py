@@ -1,3 +1,5 @@
 from .GlotScript import get_script_predictor
 
-__version__ = '1.1'
+sp = get_script_predictor()
+
+__version__ = '1.2'
