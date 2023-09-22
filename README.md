@@ -1,25 +1,32 @@
 # GlotScript
+
+## GlotScript Resource
+
+See [metadata folder](./metadata/).
+
+## GlotScript Tool
+
 Detect the script (writing system) of text based on ISO 15924.
 - Unicode version: 15.0.0
 - The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
 - Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
 
-## Special codes
+### Special codes
 - `Zinh` code is the Unicode script property value of characters that may be used with multiple scripts, and that inherit their script from a preceding base character. In some cases, we opted to integrate parts of the Zinh code (e.g. ARABIC FATHATAN..ARABIC HAMZA BELOW, ARABIC LETTER SUPERSCRIPT ALEF) into a different block.
 - `Zyyy` code is the Unicode script for "Common" characters.
 - `Zzzz` code is for Unicode script for "uncoded" script.
 
-## Install from pip
+### Install from pip
 ```bash
 pip3 install GlotScript
 ```
 
-## Install from git
+### Install from git
 ```bash
 pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
 
-## Usage
+### Usage
 
 ```python
 from GlotScript import get_script_predictor
@@ -46,23 +53,7 @@ sp('𝄞𝄫  𒊕𒀸')
 >> ('Xsux', 0.5, {'details': {'Xsux': 0.5, 'Zyyy': 0.5}, 'tie': True, 'interval': 0.0})
 ```
 
-
-## Citation
-If you use any part of this library in your research, please cite it using the following BibTex entry. 
-
-```
-@misc{glotscript,
-  author = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
-  title = {GlotScript},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/cisnlp/GlotScript}},
-}
-```
-
-
-## Exploring Unicode Blocks: Related Sources
+### Exploring Unicode Blocks: Related Sources
 <details>
 <summary>Click to Exapand</summary>
 
@@ -86,4 +77,16 @@ If you use any part of this library in your research, please cite it using the f
 
 </details>
 
+## Citation
+If you use any part of this library in your research, please cite it using the following BibTex entry. 
 
+```
+@misc{glotscript,
+  author = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
+  title = {GlotScript},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub Repository},
+  howpublished = {\url{https://github.com/cisnlp/GlotScript}},
+}
+```
