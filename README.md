@@ -81,12 +81,10 @@ sp('𝄞𝄫  𒊕𒀸')
 If you use any part of this library in your research, please cite it using the following BibTex entry. 
 
 ```
-@misc{glotscript,
-  author = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
-  title = {GlotScript},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/cisnlp/GlotScript}},
+@article{kargaran2023glotscript,
+title        = {GlotScript: A Resource and Tool for Low Resource Writing System Identification},
+author       = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
+year         = 2023,
+journal      = {arXiv preprint arXiv:2309.13320}
 }
 ```
