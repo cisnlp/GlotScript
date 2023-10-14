@@ -235,7 +235,7 @@ alo	Latn
 alp	Latn				
 alq	Latn				
 alr	Cyrl, Latn				
-als					
+als	Latn				
 alt	Cyrl, Cyrs		Mong		
 alu	Latn				
 alw	Ethi				
@@ -497,7 +497,7 @@ ayn	Arab
 ayo	Latn				
 ayp	Arab				
 ayq	Latn				
-ayr					
+ayr	Latn				
 ays	Latn				
 ayt	Latn				
 ayu	Latn				
@@ -564,7 +564,7 @@ bby	Latn
 bbz	Latn				
 bca	Hani, Latn	Bowen			
 bcb	Latn				
-bcc					
+bcc	Arab				
 bcd	Latn				
 bce	Latn				
 bcf	Latn				
@@ -630,6 +630,7 @@ ben	Beng, Brai		Newa	Latn
 beo	Latn				
 bep	Latn				
 beq	Latn				
+ber	Latn				
 bes	Latn				
 bet	Latn				
 beu	Latn				
@@ -719,6 +720,7 @@ bid	Latn
 bie	Latn				
 bif	Latn				
 big	Latn				
+bih	Deva				
 bii					
 bik	Latn		Brai		
 bil	Latn				
@@ -988,7 +990,7 @@ bsy	Latn
 bta	Latn				
 btb	Latn				
 btc	Latn				
-btd	Batk			Latn	
+btd	Latn, Batk				
 bte	Latn				
 btf	Latn				
 btg	Latn				
@@ -1101,7 +1103,7 @@ bxn	Latn
 bxo	Latn				
 bxp	Latn				
 bxq	Latn				
-bxr					
+bxr	Cyrl				
 bxs	Latn				
 bxu	Cyrl, Latn, Mong				
 bxv	Latn				
@@ -1330,7 +1332,7 @@ cmg	Zanb, Soyo, Mong
 cmi	Latn				
 cml	Latn				
 cmm					
-cmn	Brai, Bopo, Latn, Hant, Hans	Arab, Cyrl			
+cmn	Brai, Bopo, Latn, Hant, Hans, Hani	Arab, Cyrl			
 cmo	Latn, Khmr				
 cmr	Latn				
 cms	Latn				
@@ -1434,7 +1436,7 @@ csr	Zxxx
 css	Latn				
 cst	Latn				
 csv	Latn				
-csw	Cans			Latn	
+csw	Latn, Cans				
 csx	Zxxx				
 csy	Latn				
 csz	Latn				
@@ -1495,7 +1497,7 @@ daa	Latn
 dac	Latn				
 dad	Latn				
 dae	Latn				
-daf					
+daf	Latn				
 dag	Latn		Arab		
 dah	Latn				
 dai	Latn				
@@ -1605,13 +1607,13 @@ dig	Latn
 dih	Latn				
 dii	Latn				
 dij	Latn				
-dik	Arab				
+dik	Arab, Latn				
 dil	Latn				
 dim					
 din	Latn		Arab		
 dio	Latn				
 dip	Latn				
-diq					
+diq	Latn				
 dir	Latn				
 dis	Latn, Beng				
 diu	Latn				
@@ -1841,7 +1843,8 @@ emb	Latn
 eme	Latn				
 emg	Deva				
 emi	Latn				
-emk					
+emk	Latn, Nkoo	
+eml	Latn				
 emm	Latn				
 emn	Latn				
 emp	Latn				
@@ -1934,7 +1937,8 @@ fan	Latn
 fao	Latn	Brai	Runr		
 fap	Latn				
 far	Latn				
-fas	Arab	Xpeo, Phli, Prti, Phlp, Phlv, Brai		Latn	
+fas	Arab	Xpeo, Phli, Prti, Phlp, Phlv, Brai		Latn
+fat	Latn				
 fau	Latn				
 fax	Latn				
 fay	Arab				
@@ -2038,7 +2042,7 @@ gau	Telu
 gaw	Latn				
 gax	Ethi, Latn				
 gay	Latn				
-gaz					
+gaz	Latn				
 gba	Arab, Latn				
 gbb	Latn				
 gbd	Latn				
@@ -2239,7 +2243,7 @@ gop	Latn
 goq	Latn				
 gor	Latn				
 gos	Latn				
-got	Goth				
+got	Goth, Latn				
 gou	Latn				
 gov	Latn				
 gow	Latn				
@@ -2292,7 +2296,7 @@ guc	Latn
 gud	Latn				
 gue	Latn				
 guf	Latn				
-gug					
+gug	Latn				
 guh	Latn				
 gui	Latn				
 guj	Gujr, Brai		Khoj	Latn	
@@ -2367,7 +2371,7 @@ hag	Latn
 hah	Latn				
 hai	Latn				
 haj	Beng, Latn				
-hak	Hant, Hans, Latn				
+hak	Hant, Hans, Latn, Hani				
 hal	Latn				
 ham	Latn				
 han	Latn				
@@ -2387,7 +2391,7 @@ hba	Latn
 hbb	Latn				
 hbn	Latn				
 hbo	Hebr				
-hbs	Latn				
+hbs	Cyrl, Latn				
 hbu	Latn				
 hca					
 hch	Latn				
@@ -3050,7 +3054,7 @@ khf	Thai
 khg	Tibt				
 khh	Latn				
 khj	Latn				
-khk	Phag				
+khk	Cyrl, Phag				
 khl	Latn				
 khm	Khmr	Brai		Latn	
 khn	Deva				
@@ -3197,11 +3201,11 @@ kmy	Latn
 kmz	Arab			Latn	
 kna	Latn				
 knb	Latn				
-knc	Arab				
+knc	Arab, Latn				
 knd	Latn				
 kne	Latn				
 knf	Latn				
-kng					
+kng	Latn				
 kni	Latn				
 knj	Latn				
 knk	Latn		Arab		
@@ -3264,7 +3268,7 @@ kpr	Latn
 kps	Latn				
 kpt	Cyrl				
 kpu	Latn				
-kpv	Cyrs				
+kpv	Cyrs, Cyrl				
 kpw	Latn				
 kpx	Latn				
 kpy	Cyrl				
@@ -3503,6 +3507,7 @@ kze	Latn
 kzf	Latn				
 kzg					
 kzi	Latn				
+kzj	Latn				
 kzk	Latn				
 kzl	Latn				
 kzm	Latn				
@@ -3551,6 +3556,7 @@ lbf	Deva, Tibt
 lbg					
 lbi	Latn				
 lbj	Arab, Tibt				
+lbk	Latn				
 lbl	Latn				
 lbm	Deva				
 lbn	Laoo, Latn				
@@ -3865,7 +3871,7 @@ lxm	Latn
 lya	Tibt				
 lyg					
 lyn	Latn				
-lzh	Hant, Hans				
+lzh	Hant, Hans, Hani				
 lzl	Latn				
 lzn	Latn				
 lzz	Latn, Geor				
@@ -4203,7 +4209,7 @@ mng	Latn
 mnh	Latn				
 mni	Beng, Latn, Mtei	Naoriya Phulo	Brai		
 mnj	Arab				
-mnk					
+mnk	Latn, Arab	Nkoo			
 mnl	Latn				
 mnm	Latn				
 mnn	Latn				
@@ -4379,7 +4385,6 @@ muh	Latn
 mui	Latn				
 muj	Latn				
 muk	Tibt				
-mul					
 mum	Latn				
 muo	Latn				
 mup	Deva			Latn	
@@ -4528,7 +4533,7 @@ naj	Latn
 nak	Latn				
 nal	Latn				
 nam	Latn				
-nan	Latn, Hant, Hans		Kana, Bopo		Arab
+nan	Latn, Hant, Hans, Hani		Kana, Bopo		Arab
 nao	Deva				
 nap	Latn				
 naq	Latn				
@@ -4705,7 +4710,7 @@ nik
 nil	Latn				
 nim	Latn				
 nin	Latn				
-nio	 ['Latn']			Cyrl	
+nio	Cyrl, Latn				
 niq	Latn				
 nir	Latn				
 nis	Latn				
@@ -4838,7 +4843,7 @@ noj	Latn
 nok	Latn				
 nol					
 nom	Latn				
-non	Runr				
+non	Runr, Latn				
 nop	Latn				
 noq	Latn				
 nor	Latn		Runr		
@@ -5137,7 +5142,7 @@ ora	Latn
 orc	Latn				
 ore	Latn				
 org	Latn				
-orh					
+orh	Latn				
 ori	Orya, Brai	Kalinga		Latn	
 orm	Latn		Arab, Ethi		
 orn	Latn				
@@ -5149,7 +5154,7 @@ oru	Arab
 orv	Cyrl				
 orw	Latn				
 orx	Latn				
-ory					
+ory	Orya				
 orz	Latn				
 osa	Osge, Latn				
 osc	Ital, Latn				
@@ -5230,7 +5235,7 @@ pbp	Latn
 pbr	Latn				
 pbs	Latn				
 pbt	Arab				
-pbu					
+pbu	Arab				
 pbv	Latn				
 pby	Latn				
 pca	Latn				
@@ -5361,7 +5366,7 @@ plp	Deva
 plq					
 plr	Latn				
 pls	Latn				
-plt					
+plt	Latn				
 plu	Latn				
 plv	Latn				
 plw	Latn	Tagb			
@@ -5567,6 +5572,7 @@ quv	Latn
 quw	Latn				
 qux	Latn				
 quy	Latn				
+quz	Latn				
 qva	Latn				
 qvc	Latn				
 qve	Latn				
@@ -5782,7 +5788,7 @@ sah	Cyrl, Latn, Cyrs
 saj	Latn				
 sak	Latn				
 sam	Syrc, Hebr, Samr				
-san	Bhks, Deva, Gran, Shrd, Sidd	Brah	Mymr, Tirh, Newa, Khar, Sinh, Nand, Kawi	Latn	
+san	Bhks, Deva, Gran, Shrd, Sidd, Latn	Brah	Mymr, Tirh, Newa, Khar, Sinh, Nand, Kawi		
 sao	Latn				
 saq	Latn				
 sar	Latn				
@@ -6214,7 +6220,7 @@ sun	Arab, Latn, Java, Sund	Kawi, Pallava, Vatteluttu
 suo	Latn				
 suq	Ethi, Latn				
 sur	Latn				
-sus	Latn		Arab		
+sus	Arab, Latn				
 sut	Latn				
 suu					
 suv	Deva, Beng, Latn				
@@ -6236,7 +6242,7 @@ swc	Arab, Latn
 swe	Latn, Brai		Runr		
 swf	Latn				
 swg	Latn				
-swh	Arab, Brai				
+swh	Arab, Latn, Brai				
 swi	Hani, Shui	Latn			
 swj	Latn				
 swk	Latn				
@@ -6898,7 +6904,6 @@ umr	Latn
 ums	Latn				
 umu	Latn				
 una	Latn				
-und					
 une	Latn				
 ung	Latn				
 uni	Latn				
@@ -6957,7 +6962,7 @@ uvl	Latn
 uwa	Latn				
 uya	Latn				
 uzb	Arab, Cyrl, Brai, Latn		Sogd		
-uzn					
+uzn	Latn, Cyrl				
 uzs	Arab				
 vaa	Taml				
 vae	Latn				
@@ -7267,7 +7272,7 @@ wum	Latn
 wun	Latn				
 wur	Latn				
 wut	Latn				
-wuu	Hant, Hans		Latn		
+wuu	Hant, Hans, Hani		Latn		
 wuv	Latn				
 wux	Latn				
 wuy	Latn				
@@ -7647,7 +7652,7 @@ ycn	Latn
 ycp					
 ycr	Latn				
 yda	Latn				
-ydd					
+ydd	Hebr				
 yde	Latn				
 ydg	Arab				
 ydk	Latn				
@@ -7803,7 +7808,7 @@ yua	Latn
 yub	Latn				
 yuc	Latn				
 yud	Hebr				
-yue	Hant, Hans		Latn, Brai		
+yue	Hant, Hans, Hani		Latn, Brai		
 yuf	Latn				
 yug	Cyrl				
 yui	Latn				
@@ -8000,7 +8005,7 @@ zrs	Latn
 zsa	Latn				
 zsk					
 zsl	Zxxx				
-zsm	Brai				
+zsm	Brai, Latn				
 zsr	Latn				
 zsu	Latn				
 zte	Latn				
@@ -8022,7 +8027,7 @@ zum	Arab
 zun	Latn				
 zuy	Latn				
 zwa	Ethi				Latn
-zxx					
+zyb	Latn				
 zyg	Hani, Nshu				
 zyj	Hani, Latn	Sawndip			
 zyn	Hani				
