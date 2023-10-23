@@ -2,6 +2,8 @@
 
 ## GlotScript Resource
 
+What writing system is each language written in?
+
 See [metadata folder](./metadata/).
 
 ## GlotScript Tool
