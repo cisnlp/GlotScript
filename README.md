@@ -1,5 +1,10 @@
 # GlotScript
 
+- GlotScript-Tool: determines the script (writing system) of input text using ISO 15924. 
+
+- GlotScript-Resource: provides a resource displaying the writing systems for various languages. 
+
+
 ## GlotScript Resource
 
 What writing system is each language written in?
