@@ -2,18 +2,18 @@
 Author: Amir Hossein Kargaran
 Date: August, 2023
 
-Description: This code detects the script (writing system) of the given text.
+Description: This code detects/separates the script(s) (writing system(s)) of the given text.
 
 MIT License
 
-Original code is from Meta and is based on the MIT license, with permission for distribution and modification.
-The original code is capable of detecting less than 40 scripts: https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py
+The base code (Meta, MIT license::permission for distribution and modification) is capable of detecting less than 40 scripts: https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py
+The currently developed code supports all 161 Unicode 15.0 scripts.
 """
 
 import string
 import typing as tp
 from collections import Counter, defaultdict
-
+from typing import Dict, List
 
 SCRIPT_RANGES = {
     'Latn': [(65, 90), (97, 122), (170, 170), (186, 186), (192, 214), (216, 246), (248, 696), (736, 740), (7424, 7461), (7468, 7516), (7522, 7525), (7531, 7543), (7545, 7614), (7680, 7935), (8305, 8305), (8319, 8319), (8336, 8348), (8490, 8491), (8498, 8498), (8526, 8526), (8544, 8584), (11360, 11391), (42786, 42887), (42891, 42954), (42960, 42961), (42963, 42963), (42965, 42969), (42994, 43007), (43824, 43866), (43868, 43876), (43878, 43881), (64256, 64262), (65313, 65338), (65345, 65370), (67456, 67461), (67463, 67504), (67506, 67514), (122624, 122654), (122661, 122666)], # Latin
@@ -186,7 +186,7 @@ SCRIPT_RANGES = {
 ScoredScript = tp.Tuple[tp.Optional[str], float]
 
 
-def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
+def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Callable[[str], ScoredScript]:
 
     hist_map: tp.Dict[int, tp.Set[str]] = {}
     for key, ranges in SCRIPT_RANGES.items():
@@ -199,8 +199,14 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
     replace_by = ""  # we just get rid of characters that are ubiquitous
     replacement_map = {
         ord(c): replace_by
-        for c in string.whitespace + string.punctuation + string.digits
+        for c in string.whitespace
     }
+
+    if replace_punctuation:
+        replacement_map.update({ord(c): replace_by for c in string.punctuation})
+
+    if replace_digits:
+        replacement_map.update({ord(c): replace_by for c in string.digits})
 
     def predict_script(sent: str) -> ScoredScript:
         sent = sent.translate(replacement_map)
@@ -243,6 +249,38 @@ def get_script_predictor() -> tp.Callable[[str], ScoredScript]:
 
     return predict_script
 
+
+
+def separate_script(sent: str) -> Dict[str, str]:
+    """
+    Separates characters in the input string based on different scripts.
+
+    Args:
+        sent (str): Input string containing characters from different scripts.
+
+    Returns:
+        Dict[str, str]: A dictionary mapping script names to the separated characters.
+    """
+    result: Dict[str, List[str]] = {}
+
+    for char in sent:
+        code_point = ord(char)
+
+        for script, ranges in SCRIPT_RANGES.items():
+            for start, end in ranges:
+                if start <= code_point <= end or code_point == ord(' '):
+                    if script not in result:
+                        result[script] = []
+                    result[script].append(char)
+                    break
+
+    # Filter out empty values and spaces, and convert the list of characters to a string
+    result = {key: ''.join(value) for key, value in result.items() if value and ''.join(value).strip()}
+
+    return result
+
+
+
 def test_predict_script():
     predictor_fn = get_script_predictor()
 
@@ -257,3 +295,25 @@ def test_predict_script():
     assert predictor_fn(string.digits)[:2] == (None, 0)
     assert predictor_fn(string.whitespace)[:2] == (None, 0)
     assert predictor_fn("")[:2] == (None, 0)
+
+
+def test_separate_script():
+
+    sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
+    detected_scripts = separate_script(sent)
+
+    ground_truth = {
+        'Latn': 'Hello Salut     ',
+        'Hebr': '     שלום ',
+        'Arab': '  سلام    مرحبا',
+        'Hani': '   你好   ',
+        'Hira': '    こんにちは  '
+    }
+
+    for key in ground_truth.keys():
+        assert key in detected_scripts, f"Error: '{key}' script not found in detected scripts."
+        
+        detected_tokens = [x.strip() for x in detected_scripts[key].split() if len(x.strip()) != 0]
+        ground_truth_tokens = [x.strip() for x in ground_truth[key].split() if len(x.strip()) != 0]
+
+        assert sorted(detected_tokens) == sorted(ground_truth_tokens), f"Error: Tokens for key '{key}' do not match."
