@@ -33,6 +33,24 @@ pip3 install GlotScript
 pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
 
+### Usage: Script Separation 
+
+```python
+from GlotScript import separate_script
+```
+
+```python
+sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
+separate_script(sent)
+>> {
+   "Latn":"Hello Salut     ",
+   "Hebr":"     שלום ",
+   "Arab":"  سلام    مرحبا",
+   "Hani":"   你好   ",
+   "Hira":"    こんにちは  "
+}
+```
+
 ### Usage: Script Detection
 
 ```python
@@ -64,24 +82,6 @@ sp('මේක සිංහල')[0]
 ```python
 sp('𝄞𝄫  𒊕𒀸')
 >> ('Xsux', 0.5, {'details': {'Xsux': 0.5, 'Zyyy': 0.5}, 'tie': True, 'interval': 0.0})
-```
-
-### Usage: Script Separation 
-
-```python
-from GlotScript import separate_script
-```
-
-```python
-sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
-separate_script(sent)
->> {
-   "Latn":"Hello Salut     ",
-   "Hebr":"     שלום ",
-   "Arab":"  سلام    مرحبا",
-   "Hani":"   你好   ",
-   "Hira":"    こんにちは  "
-}
 ```
 
 ### Exploring Unicode Blocks: Related Sources
