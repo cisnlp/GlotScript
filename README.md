@@ -1,64 +1,54 @@
 # GlotScript
 
-- GlotScript-Tool: determines the script (writing system) of input text using ISO 15924. 
 
-- GlotScript-Resource: provides a resource displaying the writing systems for various languages. 
+- GlotScript-**Resource**: provides a resource displaying the writing systems for various languages. 
 
+- GlotScript-**Tool**: determines the script (writing system) of input text using ISO 15924. 
 
-## GlotScript Resource
+## Resource
 
 What writing system is each language written in?
 
-See [metadata folder](./metadata/).
 
-## GlotScript Tool
+**Example**:
 
-Detect the script (writing system) of text based on ISO 15924.
+| Language | CORE  | AUXILLARY |
+|---|---|---|
+| Turkish (tur)    | Latn  | Arab, Cyrl, Grek |
+| Thai (tha)        | Thai  | Latn |
+| Vietnamese (vie) | Latn  | Hani |
+
+
+See [metadata folder](./metadata/) for more languages.
+
+## Tool
+
+It's a Python library that detects the script (writing system) of text based on ISO 15924.
+
 - Unicode version: 15.0.0
 - The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
 - Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
 
-### Special codes
+**Special codes**
 - `Zinh` code is the Unicode script property value of characters that may be used with multiple scripts, and that inherit their script from a preceding base character. In some cases, we opted to integrate parts of the Zinh code (e.g. ARABIC FATHATAN..ARABIC HAMZA BELOW, ARABIC LETTER SUPERSCRIPT ALEF) into a different block.
 - `Zyyy` code is the Unicode script for "Common" characters.
 - `Zzzz` code is for Unicode script for "uncoded" script.
 
-### Install from pip
+### Install 
+
+**from pip**
 ```bash
 pip3 install GlotScript
 ```
 
-### Install from git
+**from git**
 ```bash
 pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
 
-### Usage: Script Separation 
+### Usage
 
-```python
-from GlotScript import separate_script
-```
-
-```python
-sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
-separate_script(sent)
->> {
-   "Latn":"Hello Salut     ",
-   "Hebr":"     שלום ",
-   "Arab":"  سلام    مرحبا",
-   "Hani":"   你好   ",
-   "Hira":"    こんにちは  "
-}
-```
-
-### Usage: Script Detection
-
-```python
-from GlotScript import get_script_predictor
-sp = get_script_predictor()
-```
-
-OR
+**Script Detection**
 
 ```python
 from GlotScript import sp
@@ -79,10 +69,24 @@ sp('මේක සිංහල')[0]
 >> 'Sinh'
 ```
 
+**Script Separation**
+
 ```python
-sp('𝄞𝄫  𒊕𒀸')
->> ('Xsux', 0.5, {'details': {'Xsux': 0.5, 'Zyyy': 0.5}, 'tie': True, 'interval': 0.0})
+from GlotScript import sc 
 ```
+
+```python
+sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
+sc(sent)
+>> {
+   "Latn":"Hello Salut     ",
+   "Hebr":"     שלום ",
+   "Arab":"  سلام    مرحبا",
+   "Hani":"   你好   ",
+   "Hira":"    こんにちは  "
+}
+```
+
 
 ### Exploring Unicode Blocks: Related Sources
 <details>
@@ -109,13 +113,13 @@ sp('𝄞𝄫  𒊕𒀸')
 </details>
 
 ## Citation
-If you use any part of this library in your research, please cite it using the following BibTex entry. 
+If you use any part of this our resource or tool in your research, please cite it using the following BibTex entry. 
 
-```
+```python
 @article{kargaran2023glotscript,
-title        = {GlotScript: A Resource and Tool for Low Resource Writing System Identification},
-author       = {Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
-year         = 2023,
-journal      = {arXiv preprint arXiv:2309.13320}
+  title={GlotScript: A Resource and Tool for Low Resource Writing System Identification},
+  author={Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
+  journal={arXiv preprint arXiv:2309.13320},
+  year={2023}
 }
 ```
