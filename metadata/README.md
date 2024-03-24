@@ -17,14 +17,12 @@ This dataset is available under the CC BY-SA 4.0 license, permitting modificatio
 
 ## Sources
 
-<details>
-<summary>Click to Exapand</summary>
 
-- [Wikipeida](https://en.wikipedia.org/wiki/ISO_639:xxx)
+
+- [Wikipeida](https://en.wikipedia.org/wiki/ISO_639:xxx): Since Wikipedia writing system metadata is not easily redistributed, we provide our crawled version of the Writing System Text from Wikipedia in the [sources folder](./sources).
 - [ScriptSource](https://scriptsource.org/)
 - [Unicode CLDR](https://github.com/unicode-org/cldr-json/blob/main/cldr-json/cldr-core/supplemental/likelySubtags.json)
 - [LangTag](https://raw.githubusercontent.com/silnrsi/langtags/master/pub/langtags.json)
 - [LREC_2800](https://raw.githubusercontent.com/google-research/url-nlp/main/language_metadata/data.tsv)
 - [Omniglot](https://www.omniglot.com/writing/langalph.htm)
 
-</details>
