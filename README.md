@@ -116,10 +116,24 @@ sc(sent)
 If you use any part of this our resource or tool in your research, please cite it using the following BibTex entry. 
 
 ```python
-@article{kargaran2023glotscript,
-  title={GlotScript: A Resource and Tool for Low Resource Writing System Identification},
-  author={Kargaran, Amir Hossein and Yvon, Fran{\c{c}}ois and Sch{\"u}tze, Hinrich},
-  journal={arXiv preprint arXiv:2309.13320},
-  year={2023}
+@inproceedings{kargaran-etal-2024-glotscript-resource,
+    title = "{G}lot{S}cript: A Resource and Tool for Low Resource Writing System Identification",
+    author = {Kargaran, Amir Hossein  and
+      Yvon, Fran{\c{c}}ois  and
+      Sch{\"u}tze, Hinrich},
+    editor = "Calzolari, Nicoletta  and
+      Kan, Min-Yen  and
+      Hoste, Veronique  and
+      Lenci, Alessandro  and
+      Sakti, Sakriani  and
+      Xue, Nianwen",
+    booktitle = "Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)",
+    month = may,
+    year = "2024",
+    address = "Torino, Italia",
+    publisher = "ELRA and ICCL",
+    url = "https://aclanthology.org/2024.lrec-main.687",
+    pages = "7774--7784"
 }
+
 ```
