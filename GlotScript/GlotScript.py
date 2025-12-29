@@ -183,7 +183,11 @@ SCRIPT_RANGES = {
 }
 
 
-ScoredScript = tp.Tuple[tp.Optional[str], float]
+ScoredScript = tp.Tuple[
+    tp.Optional[str],
+    float,
+    tp.Dict[str, tp.Any]
+]
 
 
 def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Callable[[str], ScoredScript]:
