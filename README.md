@@ -25,7 +25,7 @@ See [metadata folder](./metadata/) for more languages.
 
 It's a Python library that detects the script (writing system) of text based on ISO 15924.
 
-- Unicode version: 15.0.0
+- Unicode version: 17.0.0
 - The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
 - Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
 
