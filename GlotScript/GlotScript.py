@@ -194,6 +194,86 @@ SCRIPT_RANGES = {
 }
 
 
+# CJK character sets for specific script detection
+CJK_CHAR_SETS = {
+    # Characters unique to Simplified Chinese
+    "HANS_CHARS": set([
+        '么', '书', '习', '乐', '争', '于', '亚', '亿', '从', '众',
+        '会', '体', '余', '侠', '侣', '俩', '保', '儿', '克', '党',
+        '册', '写', '军', '农', '冲', '决', '况', '净', '准', '凤',
+        '処', '击', '制', '剂', '办', '务', '动', '劳', '势', '区',
+        '单', '卖', '卫', '厂', '历', '压', '厅', '县', '叠', '只',
+        '台', '后', '向', '吓', '启', '员', '团', '围', '国', '图',
+        '圆', '块', '坏', '坚', '坛', '垒', '垦', '备', '复', '够',
+        '头', '夹', '夺', '奋', '妈', '姐', '娘', '学', '宁', '宝',
+        '实', '审', '对', '专', '导', '层', '岁', '岛', '币', '师',
+        '带', '帮', '广', '庆', '应', '开', '张', '录', '归', '当',
+        '录', '恒', '悬', '惊', '惠', '惯', '愿', '戏', '战', '户',
+        '担', '拟', '择', '挤', '挥', '据', '损', '护', '报', '担',
+        '拥', '挟', '择', '据', '捣', '掷', '摄', '摆', '摇', '斗',
+        '断', '时', '显', '晓', '暂', '术', '机', '杀', '权', '来',
+        '极', '构', '样', '档', '桥', '梦', '检', '楼', '权', '岁',
+        '温', '满', '灭', '灯', '炼', '烟', '烦', '热', '爱', '爷',
+        '牵', '犹', '状', '独', '猎', '猪', '玛', '环', '现', '确',
+        '础', '签', '纤', '纪', '纲', '纳', '纵', '纸', '纹', '纺',
+        '绍', '经', '给', '络', '统', '继', '绩', '维', '绿', '网',
+        '罗', '罚', '罢', '义', '习', '职', '联', '胜', '肃', '肠',
+        '肤', '肿', '胁', '脉', '脏', '脑', '脱', '腾', '舰', '艰',
+        '艺', '节', '范', '荐', '荣', '药', '虑', '虚', '虫', '虽',
+        '蚁', '蚂', '蚊', '蚀', '蜗', '蝇', '蝴', '蝶', '见', '观',
+        '视', '览', '觉', '誉', '认', '说', '课', '谁', '调', '谅',
+        '谈', '谋', '谓', '谢', '贝', '账', '贡', '财', '责', '败',
+        '贯', '购', '贵', '贺', '资', '赌', '赏', '赐', '赛', '赶',
+        '赵', '车', '转', '轮', '软', '轻', '载', '较', '辉', '农',
+        '边', '达', '迁', '过', '运', '还', '这', '进', '连', '迟',
+        '适', '选', '逻', '递', '远', '违', '铃', '铅', '银', '链',
+        '锋', '锐', '错', '锡', '锦', '键', '镇', '长', '门', '闪',
+        '闭', '问', '闲', '间', '闻', '阅', '队', '阳', '阴', '阶',
+        '际', '陆', '陈', '险', '隐', '难', '雾', '靠', '韦', '页',
+        '项', '须', '顺', '顾', '顿', '颖', '颗', '题', '额', '风',
+        '飞', '饭', '饮', '饰', '饱', '饿', '馆', '马', '驱', '驳',
+        '验', '骂', '鱼', '鲁', '鲜', '鸟', '鸡', '鸣', '鸭', '鸽',
+        '鹅', '鹰', '黄', '鼻', '齐', '齿', '龙', '龚', '龟'
+    ]),
+
+    # Characters unique to Traditional Chinese
+    "HANT_CHARS": set([
+        '個', '為', '義', '並', '書', '來', '體', '處', '執', '學',
+        '歷', '灣', '產', '畫', '異', '發', '著', '藝', '見', '觀',
+        '計', '說', '讀', '變', '貓', '贊', '賣', '賽', '贏', '過',
+        '達', '遊', '運', '進', '這', '道', '選', '邊', '開', '關',
+        '陽', '際', '雙', '雞', '雪', '電', '須', '頭', '顔', '題',
+        '風', '飛', '飯', '餓', '館', '馬', '體', '髮', '鬥', '鬼',
+        '魚', '鳥', '鳳', '鷄', '麗', '麥', '麼', '黃', '點', '鼻',
+        '齊', '齒', '龍', '龜', '閱', '僱', '儘', '啟', '囪', '媼',
+        '嫻', '廁', '彙', '擊', '檯', '氳', '滷', '漿', '澀', '為',
+        '痲', '癡', '皚', '矓', '秈', '糉', '綵', '膩', '臟', '葉',
+        '藉', '藝', '蘋', '說', '讀', '變', '貓', '賣', '贊', '踴',
+        '蹌', '軀', '醞', '鉅', '鍛', '鬚', '麩', '鼕', '齶'
+    ]),
+
+# Japanese-specific kanji (kokuji): no kMandarin/kCantonese reading in Unicode Unihan 15.0
+    # Excludes metric unit kokuji (粁, 糎, etc.) — too rare to appear in natural text
+    "JPAN_CHARS": frozenset({
+        # ── Everyday / common ────────────────────────────────────────────────
+        '込', '辻', '畑', '畠', '峠', '榊', '枠', '凪', '凧', '働',
+        '躾', '匂', '叶', '咲', '嵐', '栞', '榎', '槻', '樋', '橿',
+        '幌', '棲', '砦', '笈', '笹', '篠', '箸', '俤', '冴', '籠',
+        # ── Nature / weather ─────────────────────────────────────────────────
+        '靄', '颯', '朦', '朧',
+        # ── Animals / food ───────────────────────────────────────────────────
+        '鰐', '鱈', '丼', '鰯', '蛯', '蟷', '鵜', '鹸', '麹',
+        # ── Action / objects ─────────────────────────────────────────────────
+        '噛', '喋', '毟', '磯', '錆', '鎧', '搔', '繋', '蘂',
+        '釧', '鏑', '鐙', '髙',
+        # ── Trees / plants / place ───────────────────────────────────────────
+        '栃', '茨', '埼',
+        # ── Place / surname only (JIS X 0208/0213) ───────────────────────────
+        '圦', '圷', '圸', '垈', '硲', '碕', '閖',
+    }),
+    
+}
+
 
 ScoredScript = tp.Tuple[
     tp.Optional[str],
@@ -202,7 +282,13 @@ ScoredScript = tp.Tuple[
 ]
 
 
-def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Callable[[str], ScoredScript]:
+ScoredScript = tp.Tuple[
+    tp.Optional[str],
+    float,
+    tp.Dict[str, tp.Any]
+]
+
+def get_script_predictor(replace_punctuation=True, replace_digits=True, composition=False) -> tp.Callable[[str], ScoredScript]:
 
     hist_map: tp.Dict[int, tp.Set[str]] = {}
     for key, ranges in SCRIPT_RANGES.items():
@@ -220,7 +306,6 @@ def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Ca
 
     if replace_punctuation:
         replacement_map.update({ord(c): replace_by for c in string.punctuation})
-
     if replace_digits:
         replacement_map.update({ord(c): replace_by for c in string.digits})
 
@@ -235,7 +320,6 @@ def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Ca
             for script_name in hist_map.get(ordinal, {'Zzzz'}):
                 script_count[script_name] += count
 
-
         # sort script_count alphabetically
         script_count = dict(sorted(script_count.items()))
 
@@ -247,21 +331,49 @@ def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Ca
                 max_score = score
                 max_script = script
 
-
         # sort all the scores
         sorted_scores = {script: abs(count / len(sent)) for script, count in script_count.items()}
         sorted_scores = dict(sorted(sorted_scores.items(), key=lambda item: item[1], reverse=True))
-        
+
         if len(sorted_scores) > 1:
             second_score = list(sorted_scores.values())[1]
             interval = max_score - second_score
             tie = True if interval == 0 else False
-            return (max_script, max_score, {'details': sorted_scores, 'tie': tie, 'interval': interval})
+            base_meta = {'details': sorted_scores, 'tie': tie, 'interval': interval}
         elif max_score == 0:
             return (None, 0, {'details': None, 'tie': None, 'interval': None})
         else:
-            return (max_script, max_score, {'details': sorted_scores, 'tie': False, 'interval': 1})
+            base_meta = {'details': sorted_scores, 'tie': False, 'interval': 1}
+    
+        if not composition or max_script not in {"Hira", "Kana", "Hang", "Hani"}:
+            return (max_script, max_score, base_meta)
+        
+        # --- composition ---
+        active = {s for s, score in sorted_scores.items() if score > 0.0} - {"Zyyy", "Zinh"}
 
+        if {"Hira", "Kana"} & active:
+            composed = "Jpan"
+            composed_score = sum(sorted_scores.get(s, 0.0) for s in {"Hira", "Kana", "Hani"})
+
+        elif "Hang" in active:
+            composed = "Kore"
+            composed_score = sum(sorted_scores.get(s, 0.0) for s in {"Hang", "Hani"})
+
+        elif max_script == "Hani":
+            hans_count = sum(1 for c in sent if c in CJK_CHAR_SETS["HANS_CHARS"])
+            hant_count = sum(1 for c in sent if c in CJK_CHAR_SETS["HANT_CHARS"])
+            jpan_count = sum(1 for c in sent if c in CJK_CHAR_SETS["JPAN_CHARS"])
+            total = hans_count + hant_count + jpan_count
+
+            counts = {"Hans": hans_count, "Hant": hant_count, "Jpan": jpan_count}
+            composed = max(counts, key=counts.get) if total > 0 else "Hans"
+            if composed != "Jpan" and total > 0 and jpan_count / total >= 0.15:
+                composed = "Jpan"
+            composed_score = max_score
+
+        base_meta["original_script"] = max_script
+        base_meta["composed"] = True
+        return (composed, composed_score, base_meta)
 
     return predict_script
 
