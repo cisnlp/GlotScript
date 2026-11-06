@@ -189,10 +189,24 @@ SCRIPT_RANGES = {
     'Yiii': [(40960, 42124), (42128, 42182)],
     'Zanb': [(72192, 72263)],
     'Zinh': [(768, 879), (1157, 1158), (2385, 2388), (6832, 6877), (6880, 6891), (7376, 7378), (7380, 7392), (7394, 7400), (7405, 7405), (7412, 7412), (7416, 7417), (7616, 7679), (8204, 8205), (8400, 8432), (12330, 12333), (12441, 12442), (65024, 65039), (65056, 65069), (66045, 66045), (66272, 66272), (70459, 70459), (118528, 118573), (118576, 118598), (119143, 119145), (119163, 119170), (119173, 119179), (119210, 119213), (917760, 917999)],
-    'Zyyy': [(0, 64), (91, 96), (123, 169), (171, 185), (187, 191), (215, 215), (247, 247), (697, 735), (741, 745), (748, 767), (884, 884), (894, 894), (901, 901), (903, 903), (1541, 1541), (1548, 1548), (1563, 1563), (1567, 1567), (1600, 1600), (1757, 1757), (2274, 2274), (2404, 2405), (3647, 3647), (4053, 4056), (4347, 4347), (5867, 5869), (5941, 5942), (6146, 6147), (6149, 6149), (7379, 7379), (7393, 7393), (7401, 7404), (7406, 7411), (7413, 7415), (7418, 7418), (8192, 8203), (8206, 8292), (8294, 8304), (8308, 8318), (8320, 8334), (8352, 8385), (8448, 8485), (8487, 8489), (8492, 8497), (8499, 8525), (8527, 8543), (8585, 8587), (8592, 9257), (9280, 9290), (9312, 10239), (10496, 11123), (11126, 11263), (11776, 11869), (12272, 12292), (12294, 12294), (12296, 12320), (12336, 12343), (12348, 12351), (12443, 12444), (12448, 12448), (12539, 12540), (12688, 12703), (12736, 12773), (12783, 12783), (12832, 12895), (12927, 13007), (13055, 13055), (13144, 13311), (19904, 19967), (42752, 42785), (42888, 42890), (43056, 43065), (43310, 43310), (43471, 43471), (43867, 43867), (43882, 43883), (64830, 64831), (65040, 65049), (65072, 65106), (65108, 65126), (65128, 65131), (65279, 65279), (65281, 65312), (65339, 65344), (65371, 65381), (65392, 65392), (65438, 65439), (65504, 65510), (65512, 65518), (65529, 65533), (65792, 65794), (65799, 65843), (65847, 65855), (65936, 65948), (66000, 66044), (66273, 66299), (113824, 113827), (117760, 118012), (118016, 118451), (118458, 118480), (118496, 118512), (118608, 118723), (118784, 119029), (119040, 119078), (119081, 119142), (119146, 119162), (119171, 119172), (119180, 119209), (119214, 119274), (119488, 119507), (119520, 119539), (119552, 119638), (119648, 119672), (119808, 119892), (119894, 119964), (119966, 119967), (119970, 119970), (119973, 119974), (119977, 119980), (119982, 119993), (119995, 119995), (119997, 120003), (120005, 120069), (120071, 120074), (120077, 120084), (120086, 120092), (120094, 120121), (120123, 120126), (120128, 120132), (120134, 120134), (120138, 120144), (120146, 120485), (120488, 120779), (120782, 120831), (126065, 126132), (126209, 126269), (126976, 127019), (127024, 127123), (127136, 127150), (127153, 127167), (127169, 127183), (127185, 127221), (127232, 127405), (127462, 127487), (127489, 127490), (127504, 127547), (127552, 127560), (127568, 127569), (127584, 127589), (127744, 128728), (128732, 128748), (128752, 128764), (128768, 128985), (128992, 129003), (129008, 129008), (129024, 129035), (129040, 129095), (129104, 129113), (129120, 129159), (129168, 129197), (129200, 129211), (129216, 129217), (129232, 129240), (129280, 129623), (129632, 129645), (129648, 129660), (129664, 129674), (129678, 129734), (129736, 129736), (129741, 129756), (129759, 129770), (129775, 129784), (129792, 129938), (129940, 130042), (917505, 917505), (917536, 917631)],
+    'Zyyy': [(0, 64), (91, 96), (123, 169), (171, 185), (187, 191), (215, 215), (247, 247), (697, 735), (741, 745), (748, 767), (884, 884), (894, 894), (901, 901), (903, 903), (1541, 1541), (1548, 1548), (1563, 1563), (1567, 1567), (1600, 1600), (1757, 1757), (2274, 2274), (2404, 2405), (3647, 3647), (4053, 4056), (4347, 4347), (5867, 5869), (5941, 5942), (6146, 6147), (6149, 6149), (7379, 7379), (7393, 7393), (7401, 7404), (7406, 7411), (7413, 7415), (7418, 7418), (8192, 8203), (8206, 8292), (8294, 8304), (8308, 8318), (8320, 8334), (8352, 8385), (8448, 8485), (8487, 8489), (8492, 8497), (8499, 8525), (8527, 8543), (8585, 8587), (8592, 9257), (9280, 9290), (9312, 10239), (10496, 11123), (11126, 11263), (11776, 11869), (12272, 12292), (12294, 12294), (12296, 12320), (12336, 12343), (12348, 12351), (12443, 12444), (12448, 12448), (12539, 12540), (12688, 12703), (12736, 12773), (12783, 12783), (12832, 12895), (12927, 13007), (13055, 13055), (13144, 13311), (19904, 19967), (42752, 42785), (42888, 42890), (43056, 43065), (43310, 43310), (43471, 43471), (43867, 43867), (43882, 43883), (64830, 64831), (65040, 65049), (65072, 65106), (65108, 65126), (65128, 65131), (65279, 65279), (65281, 65312), (65339, 65344), (65371, 65381), (65392, 65392), (65438, 65439), (65504, 65510), (65512, 65518), (65529, 65532), (65792, 65794), (65799, 65843), (65847, 65855), (65936, 65948), (66000, 66044), (66273, 66299), (113824, 113827), (117760, 118012), (118016, 118451), (118458, 118480), (118496, 118512), (118608, 118723), (118784, 119029), (119040, 119078), (119081, 119142), (119146, 119162), (119171, 119172), (119180, 119209), (119214, 119274), (119488, 119507), (119520, 119539), (119552, 119638), (119648, 119672), (119808, 119892), (119894, 119964), (119966, 119967), (119970, 119970), (119973, 119974), (119977, 119980), (119982, 119993), (119995, 119995), (119997, 120003), (120005, 120069), (120071, 120074), (120077, 120084), (120086, 120092), (120094, 120121), (120123, 120126), (120128, 120132), (120134, 120134), (120138, 120144), (120146, 120485), (120488, 120779), (120782, 120831), (126065, 126132), (126209, 126269), (126976, 127019), (127024, 127123), (127136, 127150), (127153, 127167), (127169, 127183), (127185, 127221), (127232, 127405), (127462, 127487), (127489, 127490), (127504, 127547), (127552, 127560), (127568, 127569), (127584, 127589), (127744, 128728), (128732, 128748), (128752, 128764), (128768, 128985), (128992, 129003), (129008, 129008), (129024, 129035), (129040, 129095), (129104, 129113), (129120, 129159), (129168, 129197), (129200, 129211), (129216, 129217), (129232, 129240), (129280, 129623), (129632, 129645), (129648, 129660), (129664, 129674), (129678, 129734), (129736, 129736), (129741, 129756), (129759, 129770), (129775, 129784), (129792, 129938), (129940, 130042), (917505, 917505), (917536, 917631)],
     'Zzzz': [(65533, 65533)]
 }
 
+
+
+_CHAR_SCRIPTS: tp.Dict[int, tp.Tuple[str, ...]] = {}
+
+
+def _char_scripts(ch: str) -> tp.Tuple[str, ...]:
+    """The scripts (ISO 15924) of a character, from SCRIPT_RANGES; ('Zzzz',) for an uncoded character. A few
+    characters belong to more than one script."""
+    if not _CHAR_SCRIPTS:
+        for key, ranges in SCRIPT_RANGES.items():
+            for a, b in ranges:
+                for o in range(a, b + 1):
+                    _CHAR_SCRIPTS[o] = _CHAR_SCRIPTS.get(o, ()) + (key,)
+    return _CHAR_SCRIPTS.get(ord(ch), ('Zzzz',))
 
 
 ScoredScript = tp.Tuple[
@@ -275,26 +289,117 @@ def separate_script(sent: str) -> Dict[str, str]:
         sent (str): Input string containing characters from different scripts.
 
     Returns:
-        Dict[str, str]: A dictionary mapping script names to the separated characters.
+        Dict[str, str]: A dictionary mapping script names to the separated characters. Every script gets every
+        space of the input, so the words of a script keep their positions relative to each other.
     """
     result: Dict[str, List[str]] = {}
-
+    order = list(SCRIPT_RANGES)
     for char in sent:
-        code_point = ord(char)
-
-        for script, ranges in SCRIPT_RANGES.items():
-            for start, end in ranges:
-                if start <= code_point <= end or code_point == ord(' '):
-                    if script not in result:
-                        result[script] = []
-                    result[script].append(char)
-                    break
+        if char == ' ':
+            for script in order:
+                result.setdefault(script, []).append(char)
+            continue
+        scripts = _char_scripts(char)
+        if ord(char) in _CHAR_SCRIPTS:  # characters outside every range are dropped, as before
+            for script in scripts:  # a character in several scripts goes to each of them, as before
+                result.setdefault(script, []).append(char)
 
     # Filter out empty values and spaces, and convert the list of characters to a string
     result = {key: ''.join(value) for key, value in result.items() if value and ''.join(value).strip()}
 
     return result
 
+
+ScriptSegment = tp.Tuple[str, int, int, str]
+
+_COMMON = ('Zyyy',)
+
+
+def script_segments(text: str, common: str = "merge") -> List[ScriptSegment]:
+    """
+    Cuts a text into consecutive segments of one script each.
+
+    Args:
+        text (str): Input text.
+        common (str): How to treat characters of the Common script (Zyyy: spaces, digits, punctuation, most
+            symbols). "merge" (default): a run of them joins the segments around it when both have the same script;
+            otherwise it becomes its own Zyyy segment. "separate": every run of them is its own Zyyy segment.
+            Combining marks (Zinh) always take the script of the character before them. A character that belongs
+            to several scripts takes the script of the character before it when that is one of them.
+
+    Returns:
+        List[Tuple[str, int, int, str]]: (script, start, end, segment text) with text[start:end] == segment text,
+        covering the whole text in order.
+
+    Example:
+        >>> script_segments("Hello Salut سلام 你好")
+        [('Latn', 0, 11, 'Hello Salut'), ('Zyyy', 11, 12, ' '), ('Arab', 12, 16, 'سلام'), ('Zyyy', 16, 17, ' '),
+         ('Hani', 17, 19, '你好')]
+    """
+    if common not in ("merge", "separate"):
+        raise ValueError('common must be "merge" or "separate"')
+    labels: List[str] = []
+    prev = None
+    for ch in text:
+        scripts = _char_scripts(ch)
+        if scripts == ('Zinh',) and prev is not None:
+            sc_ = prev
+        elif prev is not None and prev in scripts:
+            sc_ = prev
+        else:
+            sc_ = scripts[0]
+        labels.append(sc_)
+        if sc_ not in _COMMON:
+            prev = sc_
+    # runs of equal labels
+    runs: List[List] = []
+    for i, sc_ in enumerate(labels):
+        if runs and runs[-1][0] == sc_:
+            runs[-1][2] = i + 1
+        else:
+            runs.append([sc_, i, i + 1])
+    if common == "merge":
+        merged: List[List] = []
+        k = 0
+        while k < len(runs):
+            sc_, a, b = runs[k]
+            if (sc_ in _COMMON and merged and k + 1 < len(runs) and merged[-1][0] == runs[k + 1][0]):
+                merged[-1][2] = runs[k + 1][2]
+                k += 2
+                continue
+            if merged and merged[-1][0] == sc_:
+                merged[-1][2] = b
+            else:
+                merged.append([sc_, a, b])
+            k += 1
+        runs = merged
+    return [(sc_, a, b, text[a:b]) for sc_, a, b in runs]
+
+
+def word_scripts(text: str) -> List[tp.Tuple[str, str]]:
+    """
+    The main script of each white-space-separated word.
+
+    Args:
+        text (str): Input text.
+
+    Returns:
+        List[Tuple[str, str]]: (word, script) for each word, in order. The script is the most frequent one among the
+        word's characters that are not Common (Zyyy) or inherited (Zinh), ties going to the first in the word; a
+        word made only of Common characters (digits, punctuation) gets Zyyy.
+
+    Example:
+        >>> word_scripts("I love 你好, ok!")
+        [('I', 'Latn'), ('love', 'Latn'), ('你好,', 'Hani'), ('ok!', 'Latn')]
+    """
+    out = []
+    for word in text.split():
+        counts: tp.Dict[str, int] = {}
+        for sc_, a, b, seg in script_segments(word, common="separate"):
+            if sc_ not in _COMMON:
+                counts[sc_] = counts.get(sc_, 0) + (b - a)
+        out.append((word, max(counts, key=counts.get) if counts else 'Zyyy'))
+    return out
 
 
 def test_predict_script():
@@ -333,3 +438,37 @@ def test_separate_script():
         ground_truth_tokens = [x.strip() for x in ground_truth[key].split() if len(x.strip()) != 0]
 
         assert sorted(detected_tokens) == sorted(ground_truth_tokens), f"Error: Tokens for key '{key}' do not match."
+
+
+def test_replacement_character():
+    assert _char_scripts("�") == ('Zzzz',)
+    assert get_script_predictor()("��")[:2] == ("Zzzz", 1.0)
+
+
+def test_script_segments():
+    text = "Hello Salut سلام 你好"
+    segs = script_segments(text)
+    assert segs == [('Latn', 0, 11, 'Hello Salut'), ('Zyyy', 11, 12, ' '), ('Arab', 12, 16, 'سلام'),
+                    ('Zyyy', 16, 17, ' '), ('Hani', 17, 19, '你好')]
+    assert "".join(s[3] for s in segs) == text and all(text[a:b] == t for _, a, b, t in segs)
+    # common characters between segments of the same script join them; combining marks stay with their letter
+    assert script_segments("नमस्ते दुनिया, hello") == [('Deva', 0, 13, 'नमस्ते दुनिया'), ('Zyyy', 13, 15, ', '),
+                                                     ('Latn', 15, 20, 'hello')]
+    assert script_segments("é a") == [('Latn', 0, 4, 'é a')]
+    assert script_segments("I love 你好", common="separate") == [('Latn', 0, 1, 'I'), ('Zyyy', 1, 2, ' '),
+                                                                 ('Latn', 2, 6, 'love'), ('Zyyy', 6, 7, ' '),
+                                                                 ('Hani', 7, 9, '你好')]
+    assert script_segments("") == [] and script_segments("2024!") == [('Zyyy', 0, 5, '2024!')]
+
+
+def test_word_scripts():
+    assert word_scripts("I love 你好, ok!") == [('I', 'Latn'), ('love', 'Latn'), ('你好,', 'Hani'), ('ok!', 'Latn')]
+    assert word_scripts("Привет, world. 2024") == [('Привет,', 'Cyrl'), ('world.', 'Latn'), ('2024', 'Zyyy')]
+    assert word_scripts("   ") == []
+
+
+if __name__ == "__main__":
+    for name, fn in list(globals().items()):
+        if name.startswith("test_") and callable(fn):
+            fn()
+            print("ok", name)

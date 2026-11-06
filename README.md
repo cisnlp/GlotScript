@@ -88,6 +88,37 @@ sc(sent)
 ```
 
 
+**Script Segments**
+
+The parts of a text and the script of each, with character offsets (`text[start:end]` is the segment). Combining
+marks (`Zinh`) take the script of the character before them; spaces, digits and punctuation (`Zyyy`) join the
+segments around them when both have the same script, and are their own `Zyyy` segment otherwise
+(`common="separate"` keeps every run of them separate).
+
+```python
+from GlotScript import ss
+```
+
+```python
+ss("Hello Salut سلام 你好")
+>> [('Latn', 0, 11, 'Hello Salut'), ('Zyyy', 11, 12, ' '), ('Arab', 12, 16, 'سلام'), ('Zyyy', 16, 17, ' '), ('Hani', 17, 19, '你好')]
+```
+
+**Word Scripts**
+
+The main script of every white-space-separated word (digits and punctuation are ignored; a word made only of them is `Zyyy`):
+
+```python
+from GlotScript import ws
+```
+
+```python
+ws("I love 你好, ok!")
+>> [('I', 'Latn'), ('love', 'Latn'), ('你好,', 'Hani'), ('ok!', 'Latn')]
+```
+
+`U+FFFD` (the replacement character) is `Zzzz`.
+
 ### Exploring Unicode Blocks: Related Sources
 <details>
 <summary>Click to Exapand</summary>
