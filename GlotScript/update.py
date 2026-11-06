@@ -2,7 +2,7 @@
 Regenerate GlotScript/ranges.py (SCRIPT_RANGES) from the Unicode Character Database.
 
     python -m GlotScript.update                    # the Unicode version in ranges.py
-    python -m GlotScript.update --version 17.0.0   # another version ("latest" for the newest)
+    python -m GlotScript.update --version 18.0.0   # another version ("latest" for the newest)
     python -m GlotScript.update --check            # only report whether ranges.py matches the data
 
 Script names in Scripts.txt are mapped to their ISO 15924 codes with PropertyValueAliases.txt (property "sc"), and
@@ -104,7 +104,7 @@ def current_version():
 
 def main():
     ap = argparse.ArgumentParser(description="Regenerate GlotScript/ranges.py from the Unicode Character Database.")
-    ap.add_argument("--version", help="Unicode version, e.g. 17.0.0, or latest (default: the version in ranges.py)")
+    ap.add_argument("--version", help="Unicode version, e.g. 18.0.0, or latest (default: the version in ranges.py)")
     ap.add_argument("--check", action="store_true", help="only report whether ranges.py matches the data")
     ap.add_argument("--cache", default=os.path.join(os.path.expanduser("~"), ".cache", "glotscript"))
     a = ap.parse_args()

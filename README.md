@@ -4,7 +4,7 @@ GlotScript has two parts:
 
 - **GlotScript-Resource**: the writing systems of the languages of ISO 639-3 (8,035 listed, 7,503 with a main script), as ISO 15924 codes.
 - **GlotScript-Tool**: a Python library that finds the script (writing system) of a text, of each of its parts and
-  of each of its words, for all scripts of Unicode 17.0.0.
+  of each of its words, for all scripts of Unicode 18.0.0.
 
 ## Install
 
@@ -101,7 +101,7 @@ script_covers('Jpan', 'Hira'), script_covers('Kore', 'Hani'), script_covers('Lat
 - `Zzzz` (Unknown): code points outside every script, and `U+FFFD` (the replacement character).
 
 Script codes follow [ISO 15924](https://en.wikipedia.org/wiki/ISO_15924); the character ranges come from the
-[Unicode Character Database](https://www.unicode.org/Public/17.0.0/ucd/Scripts.txt) (Unicode 17.0.0).
+[Unicode Character Database](https://www.unicode.org/Public/18.0.0/ucd/Scripts.txt) (Unicode 18.0.0).
 
 ### Updating to a new Unicode version
 
@@ -110,7 +110,7 @@ The character ranges are generated into `GlotScript/ranges.py` from the Unicode 
 (Arabic harakat counted as Arabic, `U+FFFD` as `Zzzz`):
 
 ```bash
-python -m GlotScript.update --version 18.0.0   # or latest
+python -m GlotScript.update --version 19.0.0   # a new version, or latest
 python -m GlotScript.update --check            # does ranges.py match the data?
 python tests/test_glotscript.py
 ```
