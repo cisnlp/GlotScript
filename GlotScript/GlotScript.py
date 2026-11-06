@@ -310,6 +310,37 @@ def separate_script(sent: str) -> Dict[str, str]:
     return result
 
 
+# ISO 15924 codes for writing systems that combine or vary Unicode scripts: which Unicode scripts each one uses.
+COMPOSITE_SCRIPTS: Dict[str, tp.FrozenSet[str]] = {
+    'Jpan': frozenset({'Hani', 'Hira', 'Kana'}),  # Japanese
+    'Hrkt': frozenset({'Hira', 'Kana'}),          # Japanese syllabaries
+    'Kore': frozenset({'Hang', 'Hani'}),          # Korean
+    'Hanb': frozenset({'Hani', 'Bopo'}),          # Han with Bopomofo
+    'Hans': frozenset({'Hani'}),                  # Simplified Han
+    'Hant': frozenset({'Hani'}),                  # Traditional Han
+}
+
+
+def script_covers(writing_system: str, script: str) -> bool:
+    """
+    Whether a writing system (an ISO 15924 code, e.g. the script of a language label such as 'Jpan' in jpn_Jpan)
+    is written with characters of a Unicode script (as returned by sp, ss or ws).
+
+    Args:
+        writing_system (str): ISO 15924 code of the writing system, a Unicode script or a composite code such as
+            Jpan, Kore, Hans, Hant, Hanb or Hrkt.
+        script (str): ISO 15924 code of a Unicode script.
+
+    Returns:
+        bool: True if the writing system uses that script.
+
+    Example:
+        >>> script_covers('Jpan', 'Hira'), script_covers('Kore', 'Hani'), script_covers('Latn', 'Cyrl')
+        (True, True, False)
+    """
+    return script in COMPOSITE_SCRIPTS.get(writing_system, frozenset({writing_system}))
+
+
 ScriptSegment = tp.Tuple[str, int, int, str]
 
 _COMMON = ('Zyyy',)
@@ -459,6 +490,12 @@ def test_script_segments():
                                                                  ('Latn', 2, 6, 'love'), ('Zyyy', 6, 7, ' '),
                                                                  ('Hani', 7, 9, '你好')]
     assert script_segments("") == [] and script_segments("2024!") == [('Zyyy', 0, 5, '2024!')]
+
+
+def test_script_covers():
+    assert script_covers('Jpan', 'Hira') and script_covers('Jpan', 'Hani') and script_covers('Kore', 'Hang')
+    assert script_covers('Hant', 'Hani') and script_covers('Latn', 'Latn')
+    assert not script_covers('Latn', 'Cyrl') and not script_covers('Hani', 'Hira')
 
 
 def test_word_scripts():

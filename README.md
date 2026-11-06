@@ -117,6 +117,18 @@ ws("I love 你好, ok!")
 >> [('I', 'Latn'), ('love', 'Latn'), ('你好,', 'Hani'), ('ok!', 'Latn')]
 ```
 
+**Writing Systems of Labels**
+
+Some ISO 15924 codes name writing systems that combine Unicode scripts (`Jpan` = Han + Hiragana + Katakana, `Kore`
+= Hangul + Han, `Hanb`, `Hrkt`) or vary one (`Hans`, `Hant`). `script_covers` says whether a writing system, such as
+the script part of a language label, uses a Unicode script found by `sp`, `ss` or `ws`:
+
+```python
+from GlotScript import script_covers
+script_covers('Jpan', 'Hira'), script_covers('Kore', 'Hani'), script_covers('Latn', 'Cyrl')
+>> (True, True, False)
+```
+
 `U+FFFD` (the replacement character) is `Zzzz`.
 
 ### Exploring Unicode Blocks: Related Sources
