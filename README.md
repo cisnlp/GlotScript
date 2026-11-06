@@ -103,6 +103,18 @@ script_covers('Jpan', 'Hira'), script_covers('Kore', 'Hani'), script_covers('Lat
 Script codes follow [ISO 15924](https://en.wikipedia.org/wiki/ISO_15924); the character ranges come from the
 [Unicode Character Database](https://www.unicode.org/Public/17.0.0/ucd/Scripts.txt) (Unicode 17.0.0).
 
+### Updating to a new Unicode version
+
+The character ranges are generated into `GlotScript/ranges.py` from the Unicode Character Database
+(`Scripts.txt` and `PropertyValueAliases.txt`), with GlotScript's own adjustments listed in `GlotScript/update.py`
+(Arabic harakat counted as Arabic, `U+FFFD` as `Zzzz`):
+
+```bash
+python -m GlotScript.update --version 18.0.0   # or latest
+python -m GlotScript.update --check            # does ranges.py match the data?
+python tests/test_glotscript.py
+```
+
 ## Resource
 
 Which writing systems is each language written in?
