@@ -528,7 +528,7 @@ bal	Arab, Latn
 bam	Arab, Latn, Nkoo				
 ban	Bali, Latn, Java				
 bao	Latn				
-bap	Deva	Kirat Rai			
+bap	Deva	Krai			
 bar	Latn				
 bas	Latn				
 bau	Latn				
@@ -2236,7 +2236,7 @@ goi	Latn
 goj	Deva				
 gok	Deva				
 gol	Latn				
-gom	Deva, Knda, Latn	Mlym, Arab, Modi, Goykanadi, Nāgarī, Brah			
+gom	Deva, Knda, Latn	Mlym, Arab, Modi, Goykanadi, Brah			
 gon	Deva, Gonm, Telu, Gong	Orya			
 goo	Latn				
 gop	Latn				
@@ -2324,7 +2324,7 @@ gvm	Latn
 gvn	Latn				
 gvo	Latn				
 gvp	Latn				
-gvr	Deva	Khema, Tibt	Latn		
+gvr	Deva	Gukh, Tibt	Latn		
 gvs	Latn				
 gvy	Latn				
 gwa	Latn				
@@ -3232,7 +3232,7 @@ kof	Latn
 kog	Latn				
 koh	Latn				
 koi	Cyrl		Perm, Latn		
-kok	Deva, Knda, Latn	Mlym, Arab, Modi, Goykanadi, Nāgarī, Brah			
+kok	Deva, Knda, Latn	Mlym, Arab, Modi, Goykanadi, Brah			
 kol	Latn				
 kom	Cyrl, Perm, Cyrs		Latn		
 kon	Latn	Mandombe			
@@ -3316,7 +3316,7 @@ krq
 krr	Khmr				
 krs	Latn				
 krt	Latn				
-kru	Deva	Kurukh Banna, Tolong Siki		Latn	
+kru	Deva	Kurukh Banna, Tols		Latn	
 krv	Khmr				
 krw	Latn				
 krx	Latn				
@@ -5189,7 +5189,7 @@ oub	Latn
 oue	Latn				
 oui	Ougr, Mong				
 oum	Latn				
-ovd	Latn	Dalecarlian runes, Runr			
+ovd	Latn	Runr			
 owi	Latn				
 owl	Latn				
 oyb					
@@ -6371,10 +6371,10 @@ tct
 tcu	Latn				
 tcw	Latn				
 tcx	Taml				
-tcy	Knda	Mlym, Tigalari		Latn	
+tcy	Knda	Mlym, Tutg		Latn	
 tcz	Latn				
 tda	Arab, Tfng, Latn				
-tdb	Deva, Beng	Orya, Chisoi	Kthi		
+tdb	Deva, Beng	Orya, Chis	Kthi		
 tdc	Latn				
 tdd	Tale				
 tde	Latn				
@@ -7219,7 +7219,7 @@ wof	Arab, Latn
 wog	Latn				
 woi	Latn				
 wok	Latn				
-wol	Arab, Latn	Garay			
+wol	Arab, Latn	Gara			
 wom	Latn				
 won	Latn				
 woo	Latn				
@@ -7385,7 +7385,7 @@ xii	Latn
 xil					
 xin	Latn				
 xir	Latn				
-xis	Orya	Deva, Kurukh Banna, Tolong Siki			
+xis	Orya	Deva, Kurukh Banna, Tols			
 xiv					
 xiy	Latn				
 xjb	Latn				
@@ -7855,7 +7855,7 @@ zac	Latn
 zad	Latn				
 zae	Latn				
 zaf	Latn				
-zag	Latn	Zaghawa	Arab		
+zag	Latn	Berf	Arab		
 zah	Latn				
 zai	Latn				
 zaj	Latn				

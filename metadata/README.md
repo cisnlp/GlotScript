@@ -1,6 +1,6 @@
 # GlotScript Resource
 
-Current Version = V0.1
+Current Version = V0.2
 
 Check [history](https://github.com/cisnlp/GlotScript/commits/main/metadata/GlotScript.tsv) for other versions. 
 
