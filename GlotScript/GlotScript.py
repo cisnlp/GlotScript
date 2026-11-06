@@ -218,13 +218,7 @@ ScoredScript = tp.Tuple[
 
 def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Callable[[str], ScoredScript]:
 
-    hist_map: tp.Dict[int, tp.Set[str]] = {}
-    for key, ranges in SCRIPT_RANGES.items():
-        for r in ranges:
-            for ordinal in range(r[0], r[1] + 1):
-                if ordinal not in hist_map:
-                    hist_map[ordinal] = set()
-                hist_map[ordinal].add(key)
+    _char_scripts(' ')  # the shared character table (built once)
 
     replace_by = ""  # we just get rid of characters that are ubiquitous
     replacement_map = {
@@ -246,7 +240,7 @@ def get_script_predictor(replace_punctuation=True, replace_digits=True) -> tp.Ca
 
         for char, count in char_counts.items():
             ordinal = ord(char)
-            for script_name in hist_map.get(ordinal, {'Zzzz'}):
+            for script_name in _CHAR_SCRIPTS.get(ordinal, ('Zzzz',)):
                 script_count[script_name] += count
 
 
@@ -292,17 +286,13 @@ def separate_script(sent: str) -> Dict[str, str]:
         Dict[str, str]: A dictionary mapping script names to the separated characters. Every script gets every
         space of the input, so the words of a script keep their positions relative to each other.
     """
-    result: Dict[str, List[str]] = {}
-    order = list(SCRIPT_RANGES)
-    for char in sent:
-        if char == ' ':
-            for script in order:
-                result.setdefault(script, []).append(char)
-            continue
-        scripts = _char_scripts(char)
-        if ord(char) in _CHAR_SCRIPTS:  # characters outside every range are dropped, as before
-            for script in scripts:  # a character in several scripts goes to each of them, as before
-                result.setdefault(script, []).append(char)
+    _char_scripts(' ')
+    marks = [(char, () if char == ' ' else _CHAR_SCRIPTS.get(ord(char), ())) for char in sent]
+    seen = {script for _, scripts in marks for script in scripts}
+    present = [script for script in SCRIPT_RANGES if script in seen]
+    # every script present gets its characters and every space, in input order (characters outside every range
+    # are dropped)
+    result = {script: [char for char, scripts in marks if char == ' ' or script in scripts] for script in present}
 
     # Filter out empty values and spaces, and convert the list of characters to a string
     result = {key: ''.join(value) for key, value in result.items() if value and ''.join(value).strip()}
@@ -426,9 +416,14 @@ def word_scripts(text: str) -> List[tp.Tuple[str, str]]:
     out = []
     for word in text.split():
         counts: tp.Dict[str, int] = {}
-        for sc_, a, b, seg in script_segments(word, common="separate"):
-            if sc_ not in _COMMON:
-                counts[sc_] = counts.get(sc_, 0) + (b - a)
+        prev = None
+        for ch in word:
+            sc_ = _char_scripts(ch)[0]
+            if sc_ == 'Zinh':  # a combining mark counts for the script of the character before it
+                sc_ = prev
+            if sc_ is not None and sc_ != 'Zyyy':
+                counts[sc_] = counts.get(sc_, 0) + 1
+                prev = sc_
         out.append((word, max(counts, key=counts.get) if counts else 'Zyyy'))
     return out
 

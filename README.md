@@ -1,159 +1,120 @@
 # GlotScript
 
+GlotScript has two parts:
 
-- GlotScript-**Resource**: provides a resource displaying the writing systems for various languages. 
+- **GlotScript-Resource**: the writing systems of the languages of ISO 639-3 (8,035 listed, 7,503 with a main script), as ISO 15924 codes.
+- **GlotScript-Tool**: a Python library that finds the script (writing system) of a text, of each of its parts and
+  of each of its words, for all scripts of Unicode 17.0.0.
 
-- GlotScript-**Tool**: determines the script (writing system) of input text using ISO 15924. 
+## Install
 
-## Resource
-
-What writing system is each language written in?
-
-
-**Example**:
-
-| Language | CORE  | AUXILLARY |
-|---|---|---|
-| Turkish (tur)    | Latn  | Arab, Cyrl, Grek |
-| Thai (tha)        | Thai  | Latn |
-| Vietnamese (vie) | Latn  | Hani |
-
-
-See [metadata folder](./metadata/) for more languages.
-
-## Tool
-
-It's a Python library that detects the script (writing system) of text based on ISO 15924.
-
-- Unicode version: 17.0.0
-- The codes were sourced from [Wikipedia ISO_15924](https://en.wikipedia.org/wiki/ISO_15924).
-- Unicode ranges were extracted from [Unicode Character Database](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt).
-
-**Special codes**
-- `Zinh` code is the Unicode script property value of characters that may be used with multiple scripts, and that inherit their script from a preceding base character. In some cases, we opted to integrate parts of the Zinh code (e.g. ARABIC FATHATAN..ARABIC HAMZA BELOW, ARABIC LETTER SUPERSCRIPT ALEF) into a different block.
-- `Zyyy` code is the Unicode script for "Common" characters.
-- `Zzzz` code is for Unicode script for "uncoded" script.
-
-### Install 
-
-**from pip**
 ```bash
 pip3 install GlotScript
-```
-
-**from git**
-```bash
+# or the latest version from GitHub:
 pip3 install GlotScript@git+https://github.com/cisnlp/GlotScript
 ```
 
-### Usage
+## Tool
 
-**Script Detection**
+| Function | Short name | What it returns |
+|---|---|---|
+| `get_script_predictor()` | `sp` | the main script of a text, its share, and the share of every script |
+| `separate_script(text)` | `sc` | the characters of each script, with the text's spaces |
+| `script_segments(text)` | `ss` | the text cut into single-script parts, with character offsets |
+| `word_scripts(text)` | `ws` | the main script of every word |
+| `script_covers(writing_system, script)` | | whether a writing system such as `Jpan` uses a script such as `Hira` |
+
+All of them share one table of the scripts of Unicode characters, built the first time it is needed.
+
+### Script of a text
 
 ```python
 from GlotScript import sp
-```
 
-```python
 sp('これは日本人です')
 >> ('Hira', 0.625, {'details': {'Hira': 0.625, 'Hani': 0.375}, 'tie': False, 'interval': 0.25})
-```
 
-```python
-sp('This is Latin')[:1]
+sp('This is Latin')[:2]
 >> ('Latn', 1.0)
 ```
 
-```python
-sp('මේක සිංහල')[0]
->> 'Sinh'
-```
+The text is scored after removing white space, ASCII punctuation and ASCII digits
+(`get_script_predictor(replace_punctuation=True, replace_digits=True)`, the settings of `sp`).
 
-**Script Separation**
+### Characters of each script
 
 ```python
-from GlotScript import sc 
+from GlotScript import sc
+
+sc("Hello Salut سلام 你好 こんにちは שלום مرحبا")
+>> {'Latn': 'Hello Salut     ', 'Hebr': '     שלום ', 'Arab': '  سلام    مرحبا', 'Hani': '   你好   ', 'Hira': '    こんにちは  '}
 ```
 
-```python
-sent = "Hello Salut سلام 你好 こんにちは שלום مرحبا"
-sc(sent)
->> {
-   "Latn":"Hello Salut     ",
-   "Hebr":"     שלום ",
-   "Arab":"  سلام    مرحبا",
-   "Hani":"   你好   ",
-   "Hira":"    こんにちは  "
-}
-```
+Every script keeps all the spaces of the text, so its words stay in order.
 
-
-**Script Segments**
-
-The parts of a text and the script of each, with character offsets (`text[start:end]` is the segment). Combining
-marks (`Zinh`) take the script of the character before them; spaces, digits and punctuation (`Zyyy`) join the
-segments around them when both have the same script, and are their own `Zyyy` segment otherwise
-(`common="separate"` keeps every run of them separate).
+### Parts of a text
 
 ```python
 from GlotScript import ss
-```
 
-```python
 ss("Hello Salut سلام 你好")
 >> [('Latn', 0, 11, 'Hello Salut'), ('Zyyy', 11, 12, ' '), ('Arab', 12, 16, 'سلام'), ('Zyyy', 16, 17, ' '), ('Hani', 17, 19, '你好')]
 ```
 
-**Word Scripts**
+Each part is `(script, start, end, text)` with `text[start:end]` equal to the part, and the parts cover the whole
+text in order. Combining marks (`Zinh`) take the script of the character before them. Spaces, digits and punctuation
+(`Zyyy`) join the parts around them when both have the same script, and are their own part otherwise;
+`ss(text, common="separate")` keeps every run of them separate.
 
-The main script of every white-space-separated word (digits and punctuation are ignored; a word made only of them is `Zyyy`):
+### Script of every word
 
 ```python
 from GlotScript import ws
-```
 
-```python
 ws("I love 你好, ok!")
 >> [('I', 'Latn'), ('love', 'Latn'), ('你好,', 'Hani'), ('ok!', 'Latn')]
 ```
 
-**Writing Systems of Labels**
+A word's script is the most frequent one among its characters, not counting spaces, digits and punctuation
+(combining marks count for the character before them); ties go to the script seen first. A word with no other
+characters is `Zyyy`.
 
-Some ISO 15924 codes name writing systems that combine Unicode scripts (`Jpan` = Han + Hiragana + Katakana, `Kore`
-= Hangul + Han, `Hanb`, `Hrkt`) or vary one (`Hans`, `Hant`). `script_covers` says whether a writing system, such as
-the script part of a language label, uses a Unicode script found by `sp`, `ss` or `ws`:
+### Writing systems of language labels
+
+Some ISO 15924 codes name writing systems that combine Unicode scripts (`Jpan` = Han + Hiragana + Katakana, `Kore` =
+Hangul + Han, `Hanb` = Han + Bopomofo, `Hrkt` = Hiragana + Katakana) or vary one (`Hans`, `Hant`).
+`script_covers` tells whether a writing system, for example the script part of a language label such as `jpn_Jpan`,
+uses a script found by `sp`, `ss` or `ws`; `COMPOSITE_SCRIPTS` lists these codes.
 
 ```python
 from GlotScript import script_covers
+
 script_covers('Jpan', 'Hira'), script_covers('Kore', 'Hani'), script_covers('Latn', 'Cyrl')
 >> (True, True, False)
 ```
 
-`U+FFFD` (the replacement character) is `Zzzz`.
+### Special codes
 
-### Exploring Unicode Blocks: Related Sources
-<details>
-<summary>Click to Exapand</summary>
+- `Zinh` (Inherited): characters such as combining marks that take the script of the character before them. A few
+  Arabic marks of this block are counted as Arabic.
+- `Zyyy` (Common): characters used by many scripts, such as spaces, digits, punctuation and most symbols.
+- `Zzzz` (Unknown): code points outside every script, and `U+FFFD` (the replacement character).
 
-- [List of Unicode characters - Wikipedia](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
-- [Lightweight Plain-Text Editor for macOS - CotEditor](https://github.com/coteditor/CotEditor/blob/main/CotEditor/Sources/Unicode.UTF32.CodeUnit%2BBlockName.swift)
-- [The Cygwin Terminal – terminal emulator for Cygwin, MSYS, and WSL - mintty](https://github.com/mintty/mintty/blob/master/src/scripts.t)
-- [ISO_15924 Wikipedia](https://en.wikipedia.org/wiki/ISO_15924)
-- [Unicode Character Database (Blocks) - Unicode](http://www.unicode.org/Public/4.1.0/ucd/Blocks.txt)
-- [Unicode Character Database (Scripts) - Unicode](https://www.unicode.org/Public/15.0.0/ucd/Scripts.txt)
-- [A free, web-based font editor, focusing on font design hobbyists. - Glyphr-Studio-1 ](https://github.com/glyphr-studio/Glyphr-Studio-1/blob/master/dev/js/lib_unicode_blocks.js)
-- [Kotlin - JetBrains](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/native-wasm/src/kotlin/text/regex/AbstractCharClass.kt)
-- [UNIX-like reverse engineering framework and command-line toolset - radare2](https://github.com/radareorg/radare2/blob/master/libr/util/utf8.c)
-- [FreeOrion Game](https://github.com/freeorion/freeorion/blob/master/GG/src/UnicodeCharsets.cpp)
-- [DOMinator - Firefox](https://github.com/wisec/DOMinator/blob/master/gfx/thebes/gfxFontUtils.cpp)
-- [SHSans-derived CJK font family - glow-sans](https://github.com/welai/glow-sans/blob/master/src/utils/code-range.js)
-- [Unicode Subset Bitfields - Microsoft](https://learn.microsoft.com/en-us/windows/win32/intl/unicode-subset-bitfields)
-- [Stops - FAIR NLLB FB](https://github.com/facebookresearch/stopes/blob/main/stopes/pipelines/monolingual/utils/predict_script.py)
-- [Gradient Boosting on Decision Trees - catboost](https://github.com/catboost/catboost/blob/master/contrib/python/fonttools/fontTools/unicodedata/Blocks.py)
-- [Blender](https://github.com/blender/blender/blob/main/source/blender/blenfont/intern/blf_glyph.cc)
-- [Unicode Wikipedia](https://en.wikipedia.org/wiki/Unicode_block)
+Script codes follow [ISO 15924](https://en.wikipedia.org/wiki/ISO_15924); the character ranges come from the
+[Unicode Character Database](https://www.unicode.org/Public/17.0.0/ucd/Scripts.txt) (Unicode 17.0.0).
 
-</details>
+## Resource
+
+Which writing systems is each language written in?
+
+| Language | CORE | AUXILIARY |
+|---|---|---|
+| Turkish (tur) | Latn | Arab, Cyrl, Grek |
+| Thai (tha) | Thai | Latn |
+| Vietnamese (vie) | Latn | Hani |
+
+The full list is in [metadata/GlotScript.tsv](./metadata/GlotScript.tsv); see the [metadata folder](./metadata/) for its
+format and sources.
 
 ## Citation
 If you use any part of this our resource or tool in your research, please cite it using the following BibTex entry. 
